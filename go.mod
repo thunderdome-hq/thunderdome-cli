@@ -10,7 +10,6 @@ require (
 	github.com/spf13/cobra v1.6.1
 	github.com/spf13/viper v1.15.0
 	github.com/tcnksm/go-gitconfig v0.1.2
-	github.com/thunderdome-hq/thunderdome v0.0.0-20230209103151-384dce76d3fd
 	github.com/thunderdome-hq/thunderdome-api v0.0.0-20230209131636-e2145c159437
 	google.golang.org/grpc v1.53.0
 )
@@ -37,6 +36,7 @@ require (
 	github.com/muesli/termenv v0.13.0 // indirect
 	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect
 	github.com/olekukonko/tablewriter v0.0.5 // indirect
+	github.com/onsi/gomega v1.25.0 // indirect
 	github.com/pelletier/go-toml/v2 v2.0.6 // indirect
 	github.com/rivo/uniseg v0.4.3 // indirect
 	github.com/spf13/afero v1.9.3 // indirect
