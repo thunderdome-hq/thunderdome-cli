@@ -8,8 +8,15 @@ import (
 )
 
 var (
-	leaveOptions   = []string{emailKey, tokenKey}
+	leaveOptions   = []string{emailFlag, tokenFlag}
 	leaveTemplates = []string{"leave.md"}
+
+	leaveCmd = &cobra.Command{
+		Use:   "leave",
+		Short: "Leave Thunderdome",
+		Long:  `Leave Thunderdome by providing defaultEmail and defaultToken. This will revoke your access and you will have to rejoin again.`,
+		RunE:  newAction(leaveAction, leaveOptions, leaveTemplates),
+	}
 )
 
 func init() {
@@ -23,11 +30,4 @@ func leaveAction(cmd *cobra.Command, args []string, client api.ThunderdomeClient
 	}
 
 	return client.LeaveUser(context.Background(), request)
-}
-
-var leaveCmd = &cobra.Command{
-	Use:   "leave",
-	Short: "Leave Thunderdome",
-	Long:  `Leave Thunderdome by providing email and token. This will revoke your access and you will have to rejoin again.`,
-	RunE:  newAction(leaveAction, leaveOptions, leaveTemplates),
 }

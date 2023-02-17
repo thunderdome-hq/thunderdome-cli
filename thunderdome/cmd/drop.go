@@ -8,8 +8,15 @@ import (
 )
 
 var (
-	dropOptions   = []string{emailKey, tokenKey}
+	dropOptions   = []string{emailFlag, tokenFlag}
 	dropTemplates = []string{"drop.md"}
+
+	dropCmd = &cobra.Command{
+		Use:   "drop",
+		Short: "Drop your ticket",
+		Long:  `Drop the ticket you currently have so that someone else can continue working on it.`,
+		RunE:  newAction(dropAction, dropOptions, dropTemplates),
+	}
 )
 
 func init() {
@@ -23,11 +30,4 @@ func dropAction(cmd *cobra.Command, args []string, client api.ThunderdomeClient,
 	}
 
 	return client.DropTicket(context.Background(), request)
-}
-
-var dropCmd = &cobra.Command{
-	Use:   "drop",
-	Short: "Drop your ticket",
-	Long:  `Drop the ticket you currently have so that someone else can continue working on it.`,
-	RunE:  newAction(dropAction, dropOptions, dropTemplates),
 }

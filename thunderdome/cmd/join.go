@@ -10,8 +10,15 @@ import (
 )
 
 var (
-	joinOptions   = []string{emailKey, githubKey}
+	joinOptions   = []string{emailFlag, githubFlag}
 	joinTemplates = []string{"join.md", "user.md"}
+
+	joinCmd = &cobra.Command{
+		Use:   "join",
+		Short: "Join Thunderdome",
+		Long:  `Enroll in Thunderdome by providing your defaultEmail and defaultGithub username. Administrators will be notified and asked to accept or reject you, after which you will receive an defaultEmail. The first time you run this command, you can specify your credentials with the --defaultEmail and --defaultGithub flags. After that, they will be stored in your defaultConfig file and can be omitted.`,
+		RunE:  newAction(joinAction, joinOptions, joinTemplates),
+	}
 )
 
 func init() {
@@ -21,8 +28,8 @@ func init() {
 // joinAction sends a join command from the CLI to the Thunderdome server
 func joinAction(cmd *cobra.Command, args []string, client api.ThunderdomeClient, credentials *api.Credentials) (any, error) {
 	request := &api.JoinUserRequest{
-		Email:  viper.GetString(emailKey),
-		Github: viper.GetString(githubKey),
+		Email:  viper.GetString(emailFlag),
+		Github: viper.GetString(githubFlag),
 	}
 
 	response, err := client.JoinUser(context.Background(), request)
@@ -30,7 +37,7 @@ func joinAction(cmd *cobra.Command, args []string, client api.ThunderdomeClient,
 		return response, err
 	}
 
-	viper.Set(tokenKey, response.Token)
+	viper.Set(tokenFlag, response.Token)
 
 	err = viper.WriteConfig()
 	if err != nil {
@@ -40,11 +47,4 @@ func joinAction(cmd *cobra.Command, args []string, client api.ThunderdomeClient,
 	cmd.PrintErrln("Storing credentials in", viper.ConfigFileUsed())
 
 	return response, nil
-}
-
-var joinCmd = &cobra.Command{
-	Use:   "join",
-	Short: "Join Thunderdome",
-	Long:  `Enroll in Thunderdome by providing your email and github username. Administrators will be notified and asked to accept or reject you, after which you will receive an email. The first time you run this command, you can specify your credentials with the --email and --github flags. After that, they will be stored in your config file and can be omitted.`,
-	RunE:  newAction(joinAction, joinOptions, joinTemplates),
 }

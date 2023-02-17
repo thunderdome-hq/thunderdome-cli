@@ -9,8 +9,16 @@ import (
 )
 
 var (
-	claimOptions   = []string{emailKey, tokenKey}
+	claimOptions   = []string{emailFlag, tokenFlag}
 	claimTemplates = []string{"claim.md", "ticket.md"}
+
+	claimCmd = &cobra.Command{
+		Use:   "claim <ticket id>",
+		Short: "Claim a ticket",
+		Long:  `Claim a ticket from outsource list by providing its identifier.`,
+		Args:  cobra.ExactArgs(1),
+		RunE:  newAction(claimAction, claimOptions, claimTemplates),
+	}
 )
 
 func init() {
@@ -25,12 +33,4 @@ func claimAction(cmd *cobra.Command, args []string, client api.ThunderdomeClient
 	}
 
 	return client.ClaimTicket(context.Background(), request)
-}
-
-var claimCmd = &cobra.Command{
-	Use:   "claim <ticket id>",
-	Short: "Claim a ticket",
-	Long:  `Claim a ticket from outsource list by providing its identifier.`,
-	Args:  cobra.ExactArgs(1),
-	RunE:  newAction(claimAction, claimOptions, claimTemplates),
 }

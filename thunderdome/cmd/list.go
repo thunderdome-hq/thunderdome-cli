@@ -12,8 +12,15 @@ var (
 )
 
 var (
-	listOptions   = []string{emailKey, tokenKey}
+	listOptions   = []string{emailFlag, tokenFlag}
 	listTemplates = []string{"list.md", "ticket.md"}
+
+	listCmd = &cobra.Command{
+		Use:   "list",
+		Short: "List tickets",
+		Long:  `List tickets in Thunderdome using access defaultToken.`,
+		RunE:  newAction(listAction, listOptions, listTemplates),
+	}
 )
 
 func init() {
@@ -44,11 +51,4 @@ func listAction(cmd *cobra.Command, _ []string, client api.ThunderdomeClient, cr
 	response.Tickets = tickets
 
 	return response, nil
-}
-
-var listCmd = &cobra.Command{
-	Use:   "list",
-	Short: "List tickets",
-	Long:  `List tickets in Thunderdome using access token.`,
-	RunE:  newAction(listAction, listOptions, listTemplates),
 }

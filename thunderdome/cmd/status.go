@@ -10,7 +10,7 @@ import (
 )
 
 var (
-	statusOptions   = []string{emailKey, tokenKey}
+	statusOptions   = []string{emailFlag, tokenFlag}
 	statusTemplates = []string{"status.md", "user.md", "ticket.md"}
 )
 
@@ -23,7 +23,6 @@ func statusAction(cmd *cobra.Command, args []string, client api.ThunderdomeClien
 	request := &api.GetStatusRequest{
 		Credentials: credentials,
 	}
-
 	return client.GetStatus(context.Background(), request)
 }
 

@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/schollz/progressbar/v3"
@@ -27,6 +28,7 @@ func (s *Spinner) Start() {
 		for {
 			select {
 			case <-s.quit:
+				fmt.Println()
 				return
 			default:
 				s.apiar.Add(1)

@@ -10,7 +10,7 @@ require (
 	github.com/spf13/cobra v1.6.1
 	github.com/spf13/viper v1.15.0
 	github.com/tcnksm/go-gitconfig v0.1.2
-	github.com/thunderdome-hq/thunderdome-api v0.0.0-20230209131636-e2145c159437
+	github.com/thunderdome-hq/thunderdome-api v0.0.0-20230217103414-0085c84cf252
 	google.golang.org/grpc v1.53.0
 )
 

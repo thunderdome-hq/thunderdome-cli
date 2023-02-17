@@ -232,6 +232,10 @@ github.com/tcnksm/go-gitconfig v0.1.2 h1:iiDhRitByXAEyjgBqsKi9QU4o2TNtv9kPP3RgPg
 github.com/tcnksm/go-gitconfig v0.1.2/go.mod h1:/8EhP4H7oJZdIPyT+/UIsG87kTzrzM4UsLGSItWYCpE=
 github.com/thunderdome-hq/thunderdome-api v0.0.0-20230209131636-e2145c159437 h1:FLe+tKf9IciTKfPQKw5/e0sZFO6ncUmO5SeYoQ9ovjY=
 github.com/thunderdome-hq/thunderdome-api v0.0.0-20230209131636-e2145c159437/go.mod h1:eJ0sqV/VvYsn0SEHC3Y3ueddNBPdybdL8pyuMkggD7A=
+github.com/thunderdome-hq/thunderdome-api v0.0.0-20230217102657-61897561ae26 h1:KT6QD8EGAv2OJbuU7GwYs04hL5wWCRglUTgsCibdqnM=
+github.com/thunderdome-hq/thunderdome-api v0.0.0-20230217102657-61897561ae26/go.mod h1:eJ0sqV/VvYsn0SEHC3Y3ueddNBPdybdL8pyuMkggD7A=
+github.com/thunderdome-hq/thunderdome-api v0.0.0-20230217103414-0085c84cf252 h1:mQ6oXwhe+uPd32ExBA+ZLQUjOKewc4H5++fTE1PD6Fw=
+github.com/thunderdome-hq/thunderdome-api v0.0.0-20230217103414-0085c84cf252/go.mod h1:eJ0sqV/VvYsn0SEHC3Y3ueddNBPdybdL8pyuMkggD7A=
 github.com/yuin/goldmark v1.1.25/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
 github.com/yuin/goldmark v1.1.27/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
 github.com/yuin/goldmark v1.1.32/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
