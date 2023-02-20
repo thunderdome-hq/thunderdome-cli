@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"fmt"
 	"github.com/adrg/xdg"
 	log "github.com/sirupsen/logrus"
 	"github.com/thunderdome-hq/thunderdome-cli/thunderdome/render"
@@ -94,11 +93,10 @@ func preRun(*cobra.Command, []string) {
 	}
 }
 
-func run(cmd *cobra.Command, _ []string) error {
-	log.Debugln("Environment: ")
+func run(*cobra.Command, []string) error {
+	log.Debugln("Environment:")
 	for _, key := range viper.AllKeys() {
-		log.Debugf("%s: %s", key, viper.Get(key))
-		fmt.Println(key, viper.Get(key))
+		log.Debugf("%s: %v", key, viper.Get(key))
 	}
 	return nil
 }
