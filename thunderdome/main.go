@@ -14,9 +14,14 @@ func main() {
 	if err := cmd.RootCmd.Execute(); err != nil {
 		stat := status.Convert(err)
 		cmd.RootCmd.PrintErrf(
-			"%v error: %v\nPlease contact Thunderdome admins if you think this is a bug.",
+			"%v error: %v\n"+
+				"Details: %v\n"+
+				"Please contact Thunderdome admins if you think this is a bug.",
 			stat.Code(),
-			stat.Message())
+			stat.Message(),
+			// Join the Details with a newline
+			stat.Details(),
+		)
 
 		os.Exit(-1)
 	}

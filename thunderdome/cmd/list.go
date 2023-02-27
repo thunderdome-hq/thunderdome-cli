@@ -29,7 +29,7 @@ func init() {
 	RootCmd.AddCommand(listCmd)
 }
 
-// listAction sends a list command from the CLI to the Thunderdome server
+// listAction sends a list command from the CLI to the Thunderdome lib
 func listAction(cmd *cobra.Command, _ []string, client api.ThunderdomeClient, credentials *api.Credentials) (any, error) {
 	request := &api.ListTicketsRequest{
 		Credentials: credentials,

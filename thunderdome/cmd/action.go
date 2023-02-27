@@ -2,6 +2,8 @@ package cmd
 
 import (
 	"context"
+	"crypto/tls"
+	"crypto/x509"
 	"encoding/json"
 	"fmt"
 	log "github.com/sirupsen/logrus"
@@ -11,10 +13,33 @@ import (
 	"github.com/thunderdome-hq/thunderdome-cli/thunderdome/render"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/credentials/insecure"
+	"os"
 )
 
 type Action func(cmd *cobra.Command, args []string, client api.ThunderdomeClient, credentials *api.Credentials) (any, error)
+
+// Perhaps not needed.
+func loadTLSCredentials() (credentials.TransportCredentials, error) {
+	// Load certificate of the CA who signed server's certificate
+	pemServerCA, err := os.ReadFile("cert/ca-cert.pem")
+	if err != nil {
+		return nil, err
+	}
+
+	certPool := x509.NewCertPool()
+	if !certPool.AppendCertsFromPEM(pemServerCA) {
+		return nil, fmt.Errorf("failed to add server CA's certificate")
+	}
+
+	// Create the credentials and return it
+	config := &tls.Config{
+		RootCAs: certPool,
+	}
+
+	return credentials.NewTLS(config), nil
+}
 
 func newAction(action Action, options []string, templates []string) func(cmd *cobra.Command, args []string) error {
 	return func(cmd *cobra.Command, args []string) error {
@@ -28,9 +53,9 @@ func newAction(action Action, options []string, templates []string) func(cmd *co
 			}
 		}
 
-		// Connect to server
+		// Connect to lib
 		target := fmt.Sprintf("%s:%d", viper.GetString(hostFlag), viper.GetInt(portFlag))
-
+		config := &tls.Config{}
 		conn, err := grpc.DialContext(
 			context.Background(),
 			target,
@@ -38,8 +63,8 @@ func newAction(action Action, options []string, templates []string) func(cmd *co
 		)
 
 		if err != nil {
-			log.Debugln("Could not connect to server:", err)
-			return api.Error(codes.Unavailable, api.CLIError, "unable to connect to server target %s", target)
+			log.Debugln("Could not connect to lib:", err)
+			return api.Error(codes.Unavailable, api.CLIError, "unable to connect to lib target %s", target)
 		}
 
 		defer conn.Close()

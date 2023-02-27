@@ -25,7 +25,7 @@ func init() {
 	RootCmd.AddCommand(claimCmd)
 }
 
-// claimAction sends a claim command from the CLI to the Thunderdome server
+// claimAction sends a claim command from the CLI to the Thunderdome lib
 func claimAction(cmd *cobra.Command, args []string, client api.ThunderdomeClient, credentials *api.Credentials) (any, error) {
 	request := &api.ClaimTicketRequest{
 		Credentials: credentials,

@@ -63,8 +63,8 @@ func init() {
 
 	flags := RootCmd.PersistentFlags()
 
-	flags.String(hostFlag, defaultHost, "server host")
-	flags.Int(portFlag, defaultPort, "server port")
+	flags.String(hostFlag, defaultHost, "lib host")
+	flags.Int(portFlag, defaultPort, "lib port")
 	flags.String(outputFlag, defaultOutput, "output format")
 	flags.String(emailFlag, defaultEmail, "user defaultEmail address")
 	flags.String(githubFlag, defaultGithub, "defaultGithub username")

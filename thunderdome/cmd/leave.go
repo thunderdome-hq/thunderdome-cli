@@ -23,7 +23,7 @@ func init() {
 	RootCmd.AddCommand(leaveCmd)
 }
 
-// leaveAction sends a leave command from the CLI to the Thunderdome server
+// leaveAction sends a leave command from the CLI to the Thunderdome lib
 func leaveAction(cmd *cobra.Command, args []string, client api.ThunderdomeClient, credentials *api.Credentials) (any, error) {
 	request := &api.LeaveUserRequest{
 		Credentials: credentials,

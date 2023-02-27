@@ -25,7 +25,7 @@ func init() {
 	RootCmd.AddCommand(joinCmd)
 }
 
-// joinAction sends a join command from the CLI to the Thunderdome server
+// joinAction sends a join command from the CLI to the Thunderdome lib
 func joinAction(cmd *cobra.Command, args []string, client api.ThunderdomeClient, credentials *api.Credentials) (any, error) {
 	request := &api.JoinUserRequest{
 		Email:  viper.GetString(emailFlag),
