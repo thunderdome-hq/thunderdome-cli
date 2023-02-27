@@ -20,8 +20,8 @@ const (
 	githubFlag = "github"
 
 	// defaults
-	defaultHost   = "thunderdome.hummy.dev"
-	defaultPort   = 80
+	defaultHost   = "tmp.thunderdome.hummy.dev"
+	defaultPort   = 7233
 	defaultOutput = "text"
 	defaultEmail  = ""
 	defaultGithub = ""
