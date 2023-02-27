@@ -33,7 +33,7 @@ const (
 )
 
 var (
-	config  = "./config.yaml"
+	config  = "~/.thunderdome/config.yaml"
 	RootCmd = &cobra.Command{
 		Use:              "thunderdome [command]",
 		Short:            "Thunderdome CLI",
@@ -58,6 +58,7 @@ func init() {
 	if err != nil {
 		log.Debugln("Unable to set optimal config path, using current directory.")
 	} else {
+		log.Debugln("Using config file:", file)
 		config = file
 	}
 
