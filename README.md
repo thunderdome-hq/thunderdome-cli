@@ -13,11 +13,14 @@
                                       ░                       ░                                 
 
 ```
-# thunderdome cli
+![This is Thunderdome](https://media4.giphy.com/media/RFIuO4XWzU8gg/giphy.gif?cid=6104955evj86uj4odo4u1t2mcor2o8515jaqywsmzz1abzug&rid=giphy.gif&ct=g)
 
 `Thunderdome` is a service that will allow people from white-listed email domains to help hummy.social with development.
 
 `Thunderdome cli` is a command line interface for interacting with the thunderdome api. See below for detailed instructions!
+
+
+
 
 ## Pre-requisites
 
