@@ -21,7 +21,7 @@ func init() {
 // statusAction sends a status command from the CLI to the Thunderdome server
 func statusAction(cmd *cobra.Command, args []string, client api.ThunderdomeClient, credentials *api.Credentials) (any, error) {
 	request := &api.GetStatusRequest{
-		Credentials: credentials,
+		Request: &api.Request{Credentials: credentials},
 	}
 	return client.GetStatus(context.Background(), request)
 }

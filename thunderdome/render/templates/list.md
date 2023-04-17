@@ -1,4 +1,4 @@
-{{- .Message }}
+{{- .Response.Message }}
 
 {{ range .Tickets -}}
 

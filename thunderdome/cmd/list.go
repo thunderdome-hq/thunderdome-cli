@@ -32,7 +32,7 @@ func init() {
 // listAction sends a list command from the CLI to the Thunderdome server
 func listAction(cmd *cobra.Command, _ []string, client api.ThunderdomeClient, credentials *api.Credentials) (any, error) {
 	request := &api.ListTicketsRequest{
-		Credentials: credentials,
+		Request: &api.Request{Credentials: credentials},
 	}
 
 	response, err := client.ListTickets(context.Background(), request)

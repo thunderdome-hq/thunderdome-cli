@@ -28,8 +28,7 @@ func init() {
 // joinAction sends a join command from the CLI to the Thunderdome server
 func joinAction(cmd *cobra.Command, args []string, client api.ThunderdomeClient, credentials *api.Credentials) (any, error) {
 	request := &api.JoinUserRequest{
-		Email:  viper.GetString(emailFlag),
-		Github: viper.GetString(githubFlag),
+		Request: &api.Request{Credentials: credentials},
 	}
 
 	response, err := client.JoinUser(context.Background(), request)
@@ -37,7 +36,7 @@ func joinAction(cmd *cobra.Command, args []string, client api.ThunderdomeClient,
 		return response, err
 	}
 
-	viper.Set(tokenFlag, response.Token)
+	viper.Set(tokenFlag, response.User.Credentials.Token)
 
 	err = viper.WriteConfig()
 	if err != nil {

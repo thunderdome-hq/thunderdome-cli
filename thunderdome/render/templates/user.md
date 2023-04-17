@@ -1,5 +1,5 @@
 {{- define "user" }}
-- **Email**: {{ .Email }}
-- **Github**: {{ .Github }}
+- **Email**: {{ .Credentials.Email }}
+- **Github**: {{ .Credentials.Github }}
 - **Status**: {{ .Status }}
 {{- end }}

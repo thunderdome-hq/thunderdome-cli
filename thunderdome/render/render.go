@@ -3,6 +3,7 @@ package render
 import (
 	"bytes"
 	"embed"
+	"fmt"
 	"github.com/charmbracelet/glamour"
 	log "github.com/sirupsen/logrus"
 	"github.com/thunderdome-hq/thunderdome-api/api"
@@ -35,6 +36,7 @@ func Markdown(data any, templates ...string) (string, error) {
 	err = mkTemplate.Execute(&buffer, data)
 	if err != nil {
 		log.Debugln("Could not render template:", err)
+		fmt.Println(err)
 		return "", api.Error(codes.Internal, api.CLIError, "unable to render markdown template")
 	}
 

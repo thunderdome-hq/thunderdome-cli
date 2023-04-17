@@ -28,8 +28,8 @@ func init() {
 // claimAction sends a claim command from the CLI to the Thunderdome server
 func claimAction(cmd *cobra.Command, args []string, client api.ThunderdomeClient, credentials *api.Credentials) (any, error) {
 	request := &api.ClaimTicketRequest{
-		Credentials: credentials,
-		Id:          args[0],
+		Request: &api.Request{Credentials: credentials},
+		Id:      args[0],
 	}
 
 	return client.ClaimTicket(context.Background(), request)

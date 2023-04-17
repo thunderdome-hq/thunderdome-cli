@@ -1,3 +1,3 @@
-{{ .Message }}
+{{ .Response.Message }}
 
 {{ template "user" .User }}

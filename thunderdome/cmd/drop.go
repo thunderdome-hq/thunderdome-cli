@@ -26,7 +26,7 @@ func init() {
 // dropAction sends a drop command from the CLI to the Thunderdome server
 func dropAction(cmd *cobra.Command, args []string, client api.ThunderdomeClient, credentials *api.Credentials) (any, error) {
 	request := &api.DropTicketRequest{
-		Credentials: credentials,
+		Request: &api.Request{Credentials: credentials},
 	}
 
 	return client.DropTicket(context.Background(), request)

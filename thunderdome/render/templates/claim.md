@@ -1,4 +1,4 @@
-{{ .Message }}
+{{ .Response.Message }}
 You are now ready to work! Next steps:
 
 1. Accept invitations to the GitHub repository and team:
